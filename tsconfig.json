@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "es5",
+    "module":"es2015",
+    "lib": [
+      "es2015",
+      "es2016",
+      "es2017",
+      "dom",
+      "es2015.promise"
+    ],
+    "strict": true,
+    "sourceMap": true,
+    "declaration": false,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "rootDir": "app"
+  },
+  "include": [
+    "app"
+  ]
+}
