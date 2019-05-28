@@ -49,10 +49,11 @@ module.exports = {
 			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
 		}),
 		new HtmlWebpackPlugin({
-			title: 'F4ERP Tracking console',
+			title: 'Online result System',
 			lang: 'en-US',
 			minify: isProduction,
-			template: 'app/index.html.tera',
+			template: 'app/base.tera',
+			filename: 'base.tera',
 			inject: false,
 		}),
 		new SriPlugin({
