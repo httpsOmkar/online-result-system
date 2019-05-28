@@ -11,6 +11,6 @@
 </head>
 <body>
     {% block content %}{% endblock content %}
-    <% for (const index in htmlWebpackPlugin.files.js) { %><script src="<%= htmlWebpackPlugin.files.js[index] %>" integrity="<%= htmlWebpackPlugin.files.jsIntegrity[index] %>" crossorigin="<%= webpackConfig.output.crossOriginLoading %>"></script><% } %>
+    <% for (const index in htmlWebpackPlugin.files.js) { %><script src="<%= htmlWebpackPlugin.files.js[index].replace('../', '/') %>" integrity="<%= htmlWebpackPlugin.files.jsIntegrity[index] %>" crossorigin="<%= webpackConfig.output.crossOriginLoading %>"></script><% } %>
 </body>
 </html>

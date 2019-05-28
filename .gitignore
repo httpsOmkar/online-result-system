@@ -13,3 +13,4 @@ templates
 node_modules
 .idea
 /templates
+/static

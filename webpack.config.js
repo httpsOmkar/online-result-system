@@ -1,6 +1,7 @@
 const {LicenseWebpackPlugin} = require('license-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const fs = require('fs');
 const webpack = require('webpack');
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -40,7 +41,7 @@ module.exports = {
 
 	output: {
 		filename: '[name].[chunkhash].js',
-		path: path.resolve(__dirname, 'templates')
+		path: path.resolve(__dirname, 'static')
 	},
 
 	plugins: [
@@ -53,13 +54,18 @@ module.exports = {
 			lang: 'en-US',
 			minify: isProduction,
 			template: 'app/base.tera',
-			filename: 'base.tera',
+			filename: `../templates/base.tera`,
 			inject: false,
 		}),
+		...fs.readdirSync('./app').filter(res => res !== 'base.tera' && res.endsWith('.tera')).map(file => new HtmlWebpackPlugin({
+			minify: isProduction,
+			template: `app/${ file }`,
+			filename: `../templates/${ file }`,
+			inject: false,
+		})),
 		new SriPlugin({
 			hashFuncNames: ['sha256', 'sha384'],
 		}),
-
 	],
 
 	module: {
