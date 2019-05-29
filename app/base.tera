@@ -10,7 +10,9 @@
     <% for (const index in htmlWebpackPlugin.files.css) { %><link rel="stylesheet" defer href="<%= htmlWebpackPlugin.files.css[index] %>" integrity="<%= htmlWebpackPlugin.files.cssIntegrity[index] %>" crossorigin="<%= webpackConfig.output.crossOriginLoading %>"/><% } %>
 </head>
 <body>
-    {% block content %}{% endblock content %}
+    <f4erp-app-layout>
+        {% block content %}{% endblock content %}
+    </f4erp-app-layout>
     <% for (const index in htmlWebpackPlugin.files.js) { %><script src="<%= htmlWebpackPlugin.files.js[index].replace('../', '/') %>" integrity="<%= htmlWebpackPlugin.files.jsIntegrity[index] %>" crossorigin="<%= webpackConfig.output.crossOriginLoading %>"></script><% } %>
 </body>
 </html>

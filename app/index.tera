@@ -1,8 +1,6 @@
 {% extends "base" %}
 {% block content %}
 
-<f4erp-toolbar>
-    HELLO WORLD
-</f4erp-toolbar>
+HELLo
 
 {% endblock content %}

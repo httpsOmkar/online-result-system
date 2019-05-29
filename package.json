@@ -47,6 +47,10 @@
     "write-file-webpack-plugin": "^4.5.0"
   },
   "dependencies": {
+    "@material/mwc-button": "^0.5.0",
+    "@vaadin/vaadin": "^13.0.8",
+    "@vaadin/vaadin-app-layout": "^2.0.0",
+    "@vaadin/vaadin-tabs": "^3.0.0",
     "lit-element": "^2.1.0"
   }
 }

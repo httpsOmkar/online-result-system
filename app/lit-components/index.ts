@@ -1,33 +1,53 @@
-import {LitElement, html, css, customElement, property} from 'lit-element';
+import {css, customElement, html, LitElement} from 'lit-element';
 
-@customElement('f4erp-toolbar')
-export class MyElement extends LitElement {
+const PREFIX = `f4erp`;
+
+@customElement(`${ PREFIX }-app-layout`)
+export class AppLayout extends LitElement {
     constructor() {
         super();
     }
 
     // language=CSS
     static styles = css`
-        :host {
-            box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
-        }
-
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            padding: 8px 16px;
-            height: 56px;
-        }
     `;
+
+    static handleMenuChange(url: string) {
+        return () => {
+            const a = document.createElement('a');
+            a.href = url;
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+        };
+    }
 
     // Render element DOM by returning a `lit-html` template.
     render() {
         // language=HTML
         return html`
-            <nav>
-                <slot></slot>
-            </nav>
+            <custom-style>
+                <style include="lumo-typography lumo-color">
+                </style>
+            </custom-style>
+            <vaadin-app-layout>
+                <img slot="branding" referrerpolicy="no-referrer" src="https://i.imgur.com/GPpnszs.png" alt="Logo" width="100" height="31">
+
+                <vaadin-tabs slot="menu">
+                    <vaadin-tab theme="icon-on-top" @click="${AppLayout.handleMenuChange('/')}">
+                        <iron-icon icon="vaadin:home"></iron-icon>
+                        Home
+                    </vaadin-tab>
+                    <vaadin-tab theme="icon-on-top">
+                        <iron-icon icon="vaadin:list-select"></iron-icon>
+                        Notice board
+                    </vaadin-tab>
+                </vaadin-tabs>
+
+                <div class="content">
+                    <slot></slot>
+                </div>
+            </vaadin-app-layout>
         `;
     }
 
