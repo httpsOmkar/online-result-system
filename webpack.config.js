@@ -7,6 +7,8 @@ const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const SriPlugin = require('webpack-subresource-integrity');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const WriteFilePlugin = require('write-file-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -66,6 +68,10 @@ module.exports = {
 		new SriPlugin({
 			hashFuncNames: ['sha256', 'sha384'],
 		}),
+		new CopyPlugin([
+			{ from: './app/components', to: path.join(__dirname, 'templates', 'components') },
+		]),
+		new WriteFilePlugin(),
 	],
 
 	module: {
